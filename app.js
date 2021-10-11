@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+require('dotenv').config()
 //const { MongoClient } = require('mongodb');
 const path = require("path");
 const app = express();
@@ -17,7 +18,7 @@ app.use((req, res, next) => {
     next();
   });
 
-mongoose.connect('mongodb+srv://anu:anu612@cluster0.vxpcm.mongodb.net/openclass?retryWrites=true&w=majority') 
+mongoose.connect(process.env.DB_URL) 
 .then(()=>{
     console.log('successfully connected to mongo db');
 })
